@@ -68,7 +68,7 @@
                     <td>{{ $customer->role}}</td>
                     <td>
                         <a href="{{ route('admin.customers.edit',$customer->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal{{ $customer->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+                        <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteCustomersModal{{ $customer->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
                     </td>
                 </tr>
 
@@ -77,7 +77,7 @@
 
 
                 <!-- Delete Modal HTML -->
-                <div class="modal fade" id="deleteEmployeeModal{{ $customer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="deleteCustomersModal{{ $customer->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
