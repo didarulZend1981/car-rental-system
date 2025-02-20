@@ -74,13 +74,37 @@
                 <td>{{ ucfirst($rental->status) }}</td>
 
             <td>
-                <a href="#" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteCustomersModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+                <a href="{{ route('admin.rentals.edit',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
             </td>
         </tr>
 
 
+        <!-- Delete Modal HTML -->
+        <div class="modal fade" id="deleteRentalsModal{{ $rental->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete rental</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class=" mt-3 text-warning">Delete !</h3>
+                        <p class="mb-3">Once delete, you can't get it back.</p>
+                        <input class="" hidden id="deleteID"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="delete-modal-close" class="btn shadow-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <form action="{{ route('admin.rentals.destroy',$rental->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button onclick="itemDelete()" type="submit" id="confirmDelete" class="btn shadow-sm btn-danger" >Delete</button>
+                        </form>
 
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

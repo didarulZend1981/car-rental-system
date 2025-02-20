@@ -59,6 +59,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/rentals', [RentalController::class, 'index'])->name('admin.rentals.index');
     Route::get('/rentals/create', [RentalController::class, 'create'])->name('admin.rentals.create');
     Route::post('/rentals/store', [RentalController::class, 'store'])->name('admin.rentals.store');
+    Route::delete('/rentals/{id}', [RentalController::class, 'destroy'])->name('admin.rentals.destroy');
+    Route::get('/rentals/{id}/edit', [RentalController::class, 'edit'])->name('admin.rentals.edit');
+    Route::put('/rentals/{id}/update', [RentalController::class, 'update'])->name('admin.rentals.update');
 
 
 

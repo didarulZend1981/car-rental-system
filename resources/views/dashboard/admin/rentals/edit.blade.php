@@ -3,7 +3,7 @@
 
 
 @push('css')
-
+<link href="{{ asset('backend') }}/lib/spectrum/spectrum.css" rel="stylesheet">
 
 
 @endpush
@@ -25,50 +25,82 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Customer</h5>
-                        <a href="{{ route('admin.customers.index') }}" type="button" class="btn btn-success">back</a>
+                        <h5 class="modal-title" id="exampleModalLabel">Add Rental</h5>
+                        <a href="{{ route('admin.rentals.index') }}" type="button" class="btn btn-success">back</a>
                     </div>
-                    <form action="{{ route('admin.customers.update',$customer->id) }}" method="POST">
+                    <form action="{{ route('admin.rentals.update',$rental->id) }}" method="POST">
+
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-12 p-1">
-                                        <label class="form-label">Customer Name</label>
-                                        <input type="text" class="form-control" name="name" value="{{ $customer->name }}">
-                                        @error('name')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+
+                                        <label class="form-label col-4 p-2">Customer Name</label>
+                                        <select name="user_id" class="form-control col-8 p-1" required>
+
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}" {{ $rental->user_id == $user->id ? 'selected' : '' }}>
+                                                    {{ $user->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
+
+
+                                    <label class="form-label col-4 p-2">Car Name</label>
+                                        <select name="car_id" class="form-control col-8 p-1" required>
+                                            <option value="">Select Car</option>
+                                            @foreach ($cars as $car)
+                                            <option value="{{ $car->id }}" {{ $rental->car_id == $car->id ? 'selected' : '' }}>
+                                                    {{ $car->name }} ({{ $car->brand }})
+                                                </option>
+                                            @endforeach
+                                    </select>
+
+                                    <br/><br/>
+                                    <label class="form-label col-4 p-2">Status</label>
+                                    <select name="status" class="form-control col-8 p-1" required>
+                                        <option value="ongoing" {{ $rental->status == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
+                                        <option value="completed" {{ $rental->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                                        <option value="canceled" {{ $rental->status == 'canceled' ? 'selected' : '' }}>Canceled</option>
+                                    </select>
+
+                                    @error('end_date')
+                                    <div class="text-danger  col-12 p-3">{{ $message }}</div>
+                                    @enderror
+
+                                    <div class="col-6 p-1">
+                                        <label class="form-label">Sart Date</label>
+                                        <div class="wd-200">
+                                            <div class="input-group">
+                                              <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+                                              <input type="date" name="start_date" class="form-control fc-datepicker" value="{{ $rental->start_date }}">
+
+                                          </div>
+                                          </div>
+
                                     </div>
-                                    <div class="col-12 p-1">
-                                        <label class="form-label">Customer Email *</label>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $customer->email }}">
-                                        @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                    <div class="col-6 p-1">
+                                        <label class="form-label">End Date</label>
+                                        <div class="wd-200">
+                                            <div class="input-group">
+                                              <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
+                                              <input type="date"  name="end_date" class="form-control fc-datepicker" value="{{ $rental->end_date }}">
+
+                                            </div>
+                                          </div>
+
                                     </div>
-                                    <div class="col-12 p-1">
-                                        <label class="form-label">Customer Phone</label>
-                                        <input type="text" class="form-control" name="phone" value="{{ $customer->phone }}">
-                                        @error('phone')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12 p-1">
-                                        <label class="form-label">Customer Address</label>
-                                        <input type="text" class="form-control" name="address" value="{{ $customer->address }}">
-                                        @error('address')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+
 
 
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button  type="reset" class="btn btn-secondary">Reset</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>
@@ -83,6 +115,25 @@
 @endsection
 
 @push('js')
+<script src="{{ asset('backend') }}/lib/jquery-ui/jquery-ui.js"></script>
+<script>
+    $(function(){
 
+            'use strict';
+
+
+
+            // Datepicker
+            $('.fc-datepicker').datepicker({
+              showOtherMonths: true,
+              selectOtherMonths: true
+            });
+
+
+
+
+
+          });
+        </script>
 
 @endpush
