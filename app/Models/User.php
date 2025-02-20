@@ -36,6 +36,12 @@ class User extends Authenticatable
     {
         return $this->role === 'customer';
     }
+
+    public function rentals(){
+        return $this->hasMany(Rental::class);
+    }
+
+
 }
 
 

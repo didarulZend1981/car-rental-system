@@ -20,6 +20,14 @@ class Car extends Model
         'year',
         'image'
     ];
+
+    public function rentals(){
+        return $this->hasMany(Rental::class);
+    }
+
+
+
+    
 }
 
 

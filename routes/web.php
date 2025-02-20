@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -54,6 +55,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
     Route::get('/customers/{id}/edit', [CustomerController::class, 'edit'])->name('admin.customers.edit');
     Route::put('/customers/{id}/update', [CustomerController::class, 'update'])->name('admin.customers.update');
+//rental  ==
+    Route::get('/rentals', [RentalController::class, 'index'])->name('admin.rentals.index');
+    Route::get('/rentals/create', [RentalController::class, 'create'])->name('admin.rentals.create');
+    Route::post('/rentals/store', [RentalController::class, 'store'])->name('admin.rentals.store');
+
+
 
 
 });
