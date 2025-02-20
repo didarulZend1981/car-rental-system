@@ -14,7 +14,8 @@ class RentalController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-        return view('dashboard.admin.rentals.index');
+        $rentals = Rental::with(['user', 'car'])->latest()->get();
+        return view('dashboard.admin.rentals.index', compact('rentals'));
     }
 
     /**

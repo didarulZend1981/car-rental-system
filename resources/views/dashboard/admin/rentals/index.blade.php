@@ -49,20 +49,44 @@
 
 
 
-            <table class="table table-wrapper" id="tableData">
-                <thead>
-                    <tr class="bg-light">
-                        <th>SL</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="tableList">
+    <table class="table table-wrapper" id="tableData">
+        <thead>
+            <tr class="bg-light">
+                <th>SL</th>
+                <th>Name</th>
+                <th>Car</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Total Cost</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableList">
+        @foreach ($rentals as $key=>$rental)
+        <tr>
+            <td>{{ $key+1 }}</td>
+            <td>{{ $rental->user->name}}</td>
+            <td>{{ $rental->car->name }} ({{ $rental->car->brand }})</td>
+                <td>{{ $rental->start_date }}</td>
+                <td>{{ $rental->end_date }}</td>
+                <td>${{ $rental->total_cost }}</td>
+                <td>{{ ucfirst($rental->status) }}</td>
 
-                </tbody>
-            </table>
+            <td>
+                <a href="#" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteCustomersModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+            </td>
+        </tr>
+
+
+
+
+
+
+        @endforeach
+        </tbody>
+    </table>
 
 
 
