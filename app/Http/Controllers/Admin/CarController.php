@@ -31,8 +31,9 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+
+        // dd($request->all());
         $request->validate([
             'name' => 'required',
             'brand' => 'required',
@@ -46,8 +47,11 @@ class CarController extends Controller
 
         $imagePath = $request->file('image') ? $request->file('image')->store('cars', 'public') : null;
 
+
+
         Car::create(array_merge($request->all(), ['image' => $imagePath]));
-        $cars = Car::all();
+        // dd($a);
+        // $cars = Car::all();
         // dd($cars);
 
         // return response()->json(['success' => 'Car added successfully!']);

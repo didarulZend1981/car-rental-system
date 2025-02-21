@@ -39,11 +39,13 @@
 
     <button data-bs-toggle="modal" data-bs-target="#addCarModal">Add New Car</button>
 
-    <table id="datatable1" class="table display responsive nowrap">
+
+        <table class="table table-wrapper" id="datatable1">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Car Name</th>
+                <th>image</th>
                 <th>Brand</th>
                 <th>Model</th>
                 <th>Year</th>
@@ -58,6 +60,12 @@
                 <tr>
                     <td>{{ $car->id }}</td>
                     <td>{{ $car->name }}</td>
+                    <td>@if($car->image)
+                        <img src="{{ asset('storage/' . $car->image) }}" alt="Car Image" width="40">
+                    @else
+                        No Image
+                    @endif</td>
+
                     <td>{{ $car->brand }}</td>
                     <td>{{ $car->model }}</td>
                     <td>{{ $car->year }}</td>

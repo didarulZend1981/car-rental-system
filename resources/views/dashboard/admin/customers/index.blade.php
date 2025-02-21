@@ -56,6 +56,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Address</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -65,9 +66,11 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $customer->name}}</td>
                     <td>{{ $customer->email}}</td>
-                    <td>{{ $customer->role}}</td>
+                    <td>{{ $customer->phone}}</td>
+                    <td>{{ $customer->address}}</td>
                     <td>
-                        <a href="{{ route('admin.customers.edit',$customer->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="{{ route('admin.customers.edit',$customer->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>edit</a>
+                        <a href="{{ route('admin.customers.show',$customer->id) }}" class="show"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Show</a>
                         <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteCustomersModal{{ $customer->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
                     </td>
                 </tr>

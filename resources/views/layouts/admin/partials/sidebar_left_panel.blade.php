@@ -31,12 +31,7 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
 
-        <a href="{{route('admin.customers.index')}}" class="sl-menu-link @if($segment1==='customers') active show-sub @else  @endif">
-            <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">Customers</span>
-            </div><!-- menu-item -->
-          </a><!-- sl-menu-link -->
+
 
 
 
@@ -46,6 +41,13 @@
               <span class="menu-item-label">Rentals</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
+
+          <a href="{{route('admin.customers.index')}}" class="sl-menu-link @if($segment1==='customers') active show-sub @else  @endif">
+            <div class="sl-menu-item">
+              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+              <span class="menu-item-label">Customers</span>
+            </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
 
         <a href="javascript: void(0);" class="sl-menu-link @if($segment2==='charts') active show-sub @else  @endif">
 

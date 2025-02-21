@@ -49,7 +49,7 @@
 
 
 
-    <table class="table table-wrapper" id="tableData">
+    <table class="table table-wrapper display responsive nowrap" id="datatable1">
         <thead>
             <tr class="bg-light">
                 <th>SL</th>
@@ -74,7 +74,8 @@
                 <td>{{ ucfirst($rental->status) }}</td>
 
             <td>
-                <a href="{{ route('admin.rentals.edit',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a href="{{ route('admin.rentals.edit',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
+                <a href="{{ route('admin.rentals.show',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Show</a>
                 <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
             </td>
         </tr>
@@ -142,7 +143,7 @@
 $(function(){
  'use strict';
 
- $('#tableData').DataTable({
+ $('#datatable1').DataTable({
    responsive: true,
    language: {
      searchPlaceholder: 'Search...',

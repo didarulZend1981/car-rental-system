@@ -62,7 +62,10 @@ class RentalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $rental = Rental::findOrFail($id);
+
+        // dd($rental);
+        return view('dashboard.admin.rentals.show', compact('rental'));
     }
 
     /**

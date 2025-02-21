@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rental;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -62,7 +63,9 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customer = User::where('id',$id)->first();
+        $rentals = Rental::where('user_id',"=",$id)->get();
+        return view('dashboard.admin.customers.show', compact('rentals', 'customer'));
     }
 
     /**

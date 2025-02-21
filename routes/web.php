@@ -55,6 +55,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
     Route::get('/customers/{id}/edit', [CustomerController::class, 'edit'])->name('admin.customers.edit');
     Route::put('/customers/{id}/update', [CustomerController::class, 'update'])->name('admin.customers.update');
+    Route::get('/customers/{id}/show', [CustomerController::class, 'show'])->name('admin.customers.show');
 //rental  ==
     Route::get('/rentals', [RentalController::class, 'index'])->name('admin.rentals.index');
     Route::get('/rentals/create', [RentalController::class, 'create'])->name('admin.rentals.create');
@@ -62,6 +63,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/rentals/{id}', [RentalController::class, 'destroy'])->name('admin.rentals.destroy');
     Route::get('/rentals/{id}/edit', [RentalController::class, 'edit'])->name('admin.rentals.edit');
     Route::put('/rentals/{id}/update', [RentalController::class, 'update'])->name('admin.rentals.update');
+    Route::get('/rentals/{id}/show', [RentalController::class, 'show'])->name('admin.rentals.show');
 
 
 
