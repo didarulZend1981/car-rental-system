@@ -55,6 +55,7 @@
                                     <br/><br/>
                                     <label class="form-label col-4 p-2">Status</label>
                                     <select name="status" class="form-control col-8 p-1" required>
+                                            <option value="pendding">pendding</option>
                                             <option value="ongoing">Ongoing</option>
                                             <option value="completed">Completed</option>
                                             <option value="canceled">Canceled</option>
@@ -70,7 +71,7 @@
                                             <div class="input-group">
                                               <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
                                               <input type="text" name="start_date" class="form-control fc-datepicker" placeholder="MM/DD/YYYY">
-
+                                              {{-- type="text" --}}
                                           </div>
                                           </div>
 

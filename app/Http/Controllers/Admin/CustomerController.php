@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Rental;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -14,11 +15,27 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index(){
         $customers = User::latest()->get();
         // return view('pages.index',compact('customers'));
         return view('dashboard.admin.customers.index', compact('customers'));
+    }
+
+    public function rentals(){
+        $user = Auth::user();
+
+        $id=$user->id;
+        $rentals = Rental::where('user_id',"=",$user->id)->where('status',"!=","completed")->get();
+        return view('dashboard.customer.rentals.index',compact('rentals'));
+    }
+
+    public function rentalHistory(){
+        $user = Auth::user();
+
+        $id=$user->id;
+        $rentals = Rental::where('user_id',"=",$user->id)->where('status',"=","completed")->get();
+        // dd($rental);
+        return view('dashboard.customer.rentals.rentalHistory',compact('rentals'));
     }
 
     /**
@@ -99,6 +116,12 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+    public function delete(string $id)
+    {
+        Rental::where('id',$id)->delete();
+        toastr()->success('Customer Delete SuccessFully !!');
+        return redirect()->route('customers.rental');
+    }
     public function destroy(string $id)
     {
         User::where('id',$id)->delete();

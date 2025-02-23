@@ -94,21 +94,45 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="container">
+                    <div class="row">
                 <form action="{{ route('admin.cars.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" name="name" placeholder="Car Name" required>
-                    <input type="text" name="brand" placeholder="Brand" required>
-                    <input type="text" name="model" placeholder="Model" required>
-                    <input type="number" name="year" placeholder="Year" required>
-                    <input type="text" name="car_type" placeholder="Car Type" required>
-                    <input type="number" name="daily_rent_price" placeholder="Daily Rent Price" required>
-                    <select name="availability">
+                    <div class="col-12 p-1">
+                    <input type="text" name="name"  class="form-control" placeholder="Car Name" required>
+                    </div>
+                    <div class="col-12 p-1">
+                    <input type="text" name="brand"  class="form-control" placeholder="Brand" required>
+                    </div>
+
+                    <div class="col-12 p-1">
+                    <input type="text" name="model" class="form-control" placeholder="Model" required>
+                    </div>
+
+                    <div class="col-12 p-1">
+                    <input type="number" name="year" class="form-control"  placeholder="Year" required>
+                    </div>
+
+                    <div class="col-12 p-1">
+                    <input type="text" name="car_type" class="form-control" placeholder="Car Type" required>
+                    </div>
+                    <div class="col-12 p-1">
+                    <input type="number" name="daily_rent_price" class="form-control"  placeholder="Daily Rent Price" required>
+                    </div>
+                    <div class="col-12 p-1">
+                    <select name="availability" class="form-control">
                         <option value="1">Available</option>
                         <option value="0">Not Available</option>
                     </select>
-                    <input type="file" name="image">
+                    </div>
+                    {{-- <input type="file" name="image"> --}}
+
+                        <input type="file" id="editCarImage" name="image" accept="image/*">
+                        <img id="editCarImagePreview"   width="150" style="margin-bottom: 10px;">
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
+            </div>
+        </div>
             </div>
         </div>
     </div>
@@ -122,22 +146,63 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editCarForm">
+                <div class="container">
+
+                    <form id="editCarForm" enctype="multipart/form-data">
                     @csrf
                     @method('PUT') <!-- Laravel PUT Method -->
                     <input type="hidden" id="editCarId" name="id">
-                    <input type="text" id="editCarName" name="name" placeholder="Car Name" required>
-                    <input type="text" id="editCarBrand" name="brand" placeholder="Brand" required>
-                    <input type="text" id="editCarModel" name="model" placeholder="Model" required>
-                    <input type="number" id="editCarYear" name="year" placeholder="Year" required>
-                    <input type="text" id="editCarType" name="car_type" placeholder="Car Type" required>
-                    <input type="number" id="editCarPrice" name="daily_rent_price" placeholder="Daily Rent Price" required>
-                    <select id="editCarAvailability" name="availability">
+                    <div class="row">
+                    <label class="form-label col-4 p-1">Car Name</label>
+                    <input type="text" id="editCarName" class="form-control col-8 p-1" name="name" placeholder="Car Name" required>
+                    </br></br>
+
+
+                    <label class="form-label col-4 p-1">Brand Name</label>
+                    <input type="text" id="editCarBrand" class="form-control col-8 p-1"  name="brand" placeholder="Brand" required>
+
+
+                    <label class="form-label col-4 p-1">Model Name</label>
+                    <input type="text" id="editCarModel" class="form-control col-8 p-2"  name="model" placeholder="Model" required>
+
+
+                    <label class="form-label col-4 p-1">Year</label>
+                    <input type="number" id="editCarYear" class="form-control col-8 p-2"  name="year" placeholder="Year" required>
+
+
+                    <label class="form-label col-4 p-1">Car Type</label>
+                    <input type="text" id="editCarType" class="form-control col-8 p-2" name="car_type" placeholder="Car Type" required>
+
+
+                    <label class="form-label col-4 p-1">Daily Rent Price</label>
+                    <input type="number" id="editCarPrice" class="form-control col-8 p-2" name="daily_rent_price" placeholder="Daily Rent Price" required>
+
+
+                    <label class="form-label col-4 p-1">Status</label>
+                    <select id="editCarAvailability" class="form-control col-8 p-2" name="availability">
                         <option value="1">Available</option>
                         <option value="0">Not Available</option>
                     </select>
+
+
+                    <!-- Image Preview Field -->
+                    <div>
+                        {{-- <label for="editCarImage">Current Image:</label><br> --}}
+                        {{-- <img id="editCarImagePreview"  alt="Car Image" width="150" style="margin-bottom: 10px;"> --}}
+                    </div>
+
+                    <!-- Image Upload Input -->
+                    <div>
+                        <label for="editCarImage">Change Image (Optional):</label>
+                        <input type="file" id="editCarImage" name="image" accept="image/*">
+                        <img id="editCarImagePreview"  alt="Car Image" width="150" style="margin-bottom: 10px;">
+
+                    </div>
                     <button type="submit" class="btn btn-primary">Update</button>
+
                 </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -173,23 +238,41 @@
         $('#editCarPrice').val(data.daily_rent_price);
         $('#editCarAvailability').val(data.availability);
 
+        if (data.image) {
+            $('#editCarImagePreview').attr('src', '/storage/' + data.image);
+        } else {
+            $('#editCarImagePreview').attr('src', 'https://via.placeholder.com/100');
+        }
+
         // Modal Show
         $('#editCarModal').modal('show');
     });
 }
 
-// Edit Form Submit
+
+
+
+$('#editCarImage').on('change', function (e) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        $('#editCarImagePreview').attr('src', e.target.result);
+    };
+    reader.readAsDataURL(this.files[0]);
+});
+
+
 $('#editCarForm').submit(function (event) {
     event.preventDefault(); // Prevent Form Default Submit
 
     let id = $('#editCarId').val();
-    let formData = $(this).serialize(); // Serialize Form Data
+    let formData = new FormData(this); // FormData ব্যবহার করে ফাইল সহ সব ডেটা সংগ্রহ
 
     $.ajax({
-        url: '/cars/' + id+'/update', // Update Route
-        type: 'PUT',
+        url: '/cars/' + id + '/update', // Update Route
+        type: 'POST', // Laravel এ PUT/POST এর মতো কাজ করে
         data: formData,
-
+        processData: false,  // ফাইল আপলোডের জন্য এটি false রাখতে হবে
+        contentType: false,  // ফাইল আপলোডের জন্য এটি false রাখতে হবে
         success: function (res) {
             Swal.fire('Updated!', res.success, 'success').then(() => {
                 $('#editCarModal').modal('hide');
@@ -201,6 +284,10 @@ $('#editCarForm').submit(function (event) {
         }
     });
 });
+
+
+
+
 
         function deleteCar(id) {
 

@@ -39,32 +39,61 @@
     <div class="table-title">
         <div class="row">
             <div class="col-sm-10">
-                <h2>Manage <b>Rental</b></h2>
+                <h2>Rental <b>History</b></h2>
             </div>
-            <div class="col-sm-2">
-                <a href="{{ route('admin.rentals.create') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add New Rental</span></a>
-            </div>
+
         </div>
     </div>
 
 
 
-            <table class="table table-wrapper" id="tableData">
-                <thead>
-                    <tr class="bg-light">
-                        <th>SL</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="tableList">
+   
+        <table class="table table-wrapper display responsive" id="tableData">
+        <thead>
+            <tr class="bg-light">
+                <th>SL</th>
+                <th>car Name</th>
+                <th>car model</th>
+                <th>car brand</th>
+                <th>car_type</th>
+                <th>rent/day</th>
+                <th>day</th>
+                <th>total_cost</th>
+                <th>status</th>
+                <th>start_date</th>
+                <th>end_date</th>
+
+            </tr>
+        </thead>
+        <tbody id="tableList">
+        @foreach ($rentals as $key=>$rental)
+        <tr>
+            <td>{{ $key+1 }}</td>
+            <td>{{ $rental->car->name}}</td>
+            <td>{{ $rental->car->model}}</td>
+            <td>{{ $rental->car->brand}}</td>
+            <td>{{ $rental->car->car_type}}</td>
+            <td>{{ $rental->car->daily_rent_price}}</td>
+            <td>{{ \Carbon\Carbon::parse($rental->start_date)->diffInDays(\Carbon\Carbon::parse($rental->end_date)) }}</td>
+            <td>{{ $rental->total_cost}}</td>
+            <td>{{ $rental->status}}</td>
+            <td>{{ $rental->start_date}}</td>
+            <td>{{ $rental->end_date}}</td>
 
 
-                
-                </tbody>
-            </table>
+
+
+        </tr>
+
+
+
+
+
+
+
+        @endforeach
+        </tbody>
+    </table>
 
 
 

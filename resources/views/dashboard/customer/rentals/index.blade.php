@@ -1,7 +1,3 @@
-
-
-
-
 @extends('layouts.admin.layout')
 @section('title','didar')
 
@@ -21,8 +17,6 @@
 
 
 @endpush
-
-
 @section('sl-mainpanel')
 
 <nav class="breadcrumb sl-breadcrumb">
@@ -32,54 +26,55 @@
   </nav>
 
   <div class="sl-pagebody">
+    <div class="sl-page-title">
+      <h5>Data Table</h5>
+      <p>DataTables is a plug-in for the jQuery Javascript library.</p>
+    </div><!-- sl-page-title -->
 
     <div class="card pd-20 pd-sm-40">
+      <h6 class="card-body-title">Basic Responsive DataTable</h6>
+      <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
 
-
-    <div class="table-title">
-        <div class="row">
-            <div class="col-sm-10">
-                <h2>Manage <b>Rental</b></h2>
-            </div>
-            <div class="col-sm-2">
-                <a href="{{ route('admin.rentals.create') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add New Rental</span></a>
-            </div>
-        </div>
-    </div>
-
-
-
-    <table class="table table-wrapper display responsive" id="datatable1">
-        {{-- <table class="table table-wrapper" id="tableData"> --}}
+      <table class="table table-wrapper display responsive" id="datatable1">
         <thead>
             <tr class="bg-light">
                 <th>SL</th>
-                <th>Name</th>
-                <th>Car</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Total Cost</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>car Name</th>
+                <th>car model</th>
+                <th>car brand</th>
+                <th>car_type</th>
+                <th>rent/day</th>
+                <th>day</th>
+                <th>total_cost</th>
+                <th>status</th>
+                <th>start_date</th>
+                <th>end_date</th>
+                <th>Cancel</th>
+
+
             </tr>
         </thead>
         <tbody id="tableList">
         @foreach ($rentals as $key=>$rental)
         <tr>
             <td>{{ $key+1 }}</td>
-            <td>{{ $rental->user->name}}</td>
-            <td>{{ $rental->car->name }} ({{ $rental->car->brand }})</td>
-                <td>{{ $rental->start_date }}</td>
-                <td>{{ $rental->end_date }}</td>
-                <td>${{ $rental->total_cost }}</td>
-                <td>{{ ucfirst($rental->status) }}</td>
-
+            <td>{{ $rental->car->name}}</td>
+            <td>{{ $rental->car->model}}</td>
+            <td>{{ $rental->car->brand}}</td>
+            <td>{{ $rental->car->car_type}}</td>
+            <td>{{ $rental->car->daily_rent_price}}</td>
+            <td>{{ \Carbon\Carbon::parse($rental->start_date)->diffInDays(\Carbon\Carbon::parse($rental->end_date)) }}</td>
+            <td>{{ $rental->total_cost}}</td>
+            <td>{{ $rental->status}}</td>
+            <td>{{ $rental->start_date}}</td>
+            <td>{{ $rental->end_date}}</td>
             <td>
-                <a href="{{ route('admin.rentals.edit',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
-                <a href="{{ route('admin.rentals.show',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Show</a>
-                <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+            <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
             </td>
+
         </tr>
+
+
 
 
         <!-- Delete Modal HTML -->
@@ -97,7 +92,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="delete-modal-close" class="btn shadow-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <form action="{{ route('admin.rentals.destroy',$rental->id) }}" method="post">
+                        <form action="{{ route('customers.rental.destroy',$rental->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button onclick="itemDelete()" type="submit" id="confirmDelete" class="btn shadow-sm btn-danger" >Delete</button>
@@ -109,58 +104,43 @@
         </div>
 
 
-
         @endforeach
         </tbody>
     </table>
+    </div><!-- card -->
 
 
 
 
 
-
-
-
-
-
-
-
-    </div>
 
   </div><!-- sl-pagebody -->
 
 
 @endsection
-
-
-
-
-@push('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@push('js')
 
 <script>
-
 $(function(){
- 'use strict';
+'use strict';
 
- $('#datatable1').DataTable({
-   responsive: true,
-   language: {
-     searchPlaceholder: 'Search...',
-     sSearch: '',
-     lengthMenu: '_MENU_ items/page',
-   }
- });
+$('#datatable1').DataTable({
+  responsive: true,
+  language: {
+    searchPlaceholder: 'Search...',
+    sSearch: '',
+    lengthMenu: '_MENU_ items/page',
+  }
+});
 
 
 
- // Select2
- $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+// Select2
+$('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
 
- });
-
+});
 </script>
-
 
 @endpush

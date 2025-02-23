@@ -61,6 +61,7 @@
                                     <br/><br/>
                                     <label class="form-label col-4 p-2">Status</label>
                                     <select name="status" class="form-control col-8 p-1" required>
+                                        <option value="pendding" {{ $rental->status == 'pendding' ? 'selected' : '' }}>pendding</option>
                                         <option value="ongoing" {{ $rental->status == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
                                         <option value="completed" {{ $rental->status == 'completed' ? 'selected' : '' }}>Completed</option>
                                         <option value="canceled" {{ $rental->status == 'canceled' ? 'selected' : '' }}>Canceled</option>

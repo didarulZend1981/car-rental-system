@@ -30,13 +30,45 @@ class RentalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function checkBooking(Request $request){
+        $startDate = \Carbon\Carbon::parse($request->start_date)->toDateString();
+        $endDate = \Carbon\Carbon::parse($request->end_date)->toDateString();
+
+        // dd($request->all());
+        return Rental::where('car_id', $request->car_id)
+            ->whereNotIn('status', ['completed', 'cancelled']) // Only active bookings
+            ->where(function ($query) use ($startDate, $endDate) {
+                $query->where(function ($q) use ($startDate, $endDate) {
+                    $q->whereBetween('start_date', [$startDate, $endDate])
+                      ->orWhereBetween('end_date', [$startDate, $endDate]);
+                })
+                ->orWhere(function ($q) use ($startDate, $endDate) {
+                    $q->where('start_date', '>=', $startDate)
+                      ->where('end_date', '<=', $endDate);
+                });
+            })
+            ->exists();  // Changed from get() to exists()
+    }
+
+
+    public function carCheckSatus(Request $request){
+        $check=Rental::where('car_id', $request->car_id)
+            ->whereNotIn('status', ['completed', 'cancelled']) // Only active bookings
+            ->where('start_date', $request->car_id)
+            ->where('end_date', $request->car_id)
+            ->first();
+
+
+    }
+
     public function store(Request $request){
-        //dd($request->all());
+        // dd($request->all());
         $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'status' => 'required|in:ongoing,completed,canceled',
+            'status' => 'required|in:pendding,ongoing,completed,canceled',
         ]);
+
 
         $start = \Carbon\Carbon::createFromFormat('m/d/Y', $request->start_date);
         $end = \Carbon\Carbon::createFromFormat('m/d/Y', $request->end_date);
@@ -45,7 +77,21 @@ class RentalController extends Controller
          $cars = Car::find($request->car_id);
          $total_cost=$cars->daily_rent_price*$start->diffInDays($end);
 
-         Rental::create([
+        // dd($total_cost);
+
+         $isBooking=$this->checkBooking($request);
+        // dd($isBooking);
+
+         if ($isBooking){
+
+             toastr()->success('car all ready Booking !!');
+            // return redirect()->route('aadmin.rentals.create');
+            return redirect()->route('admin.rentals.index');
+         }
+
+        // if(!$isRended)
+
+       Rental::create([
             'user_id' => $request->user_id,
             'car_id' => $request->car_id,
             'start_date' => $start,
@@ -53,8 +99,20 @@ class RentalController extends Controller
             'total_cost' => $total_cost,
             'status' => $request->status,
         ]);
+
+        // Car::where('id', $request->car_id)->update([
+
+        //     'status' => $request->input('status'),
+
+        // ]);
+
+
+
+        // return back()->with('success', 'Car booked successfully!');
+
         toastr()->success('Rental Add SuccessFully !!');
         return redirect()->route('admin.rentals.index');
+
     }
 
     /**

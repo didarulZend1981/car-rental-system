@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -72,7 +73,19 @@ class CarController extends Controller
     public function edit(string $id)
     {
         $car = Car::findOrFail($id);
-        return response()->json($car);
+        // return response()->json($car);
+
+        return response()->json([
+            'id' => $car->id,
+            'name' => $car->name,
+            'brand' => $car->brand,
+            'model' => $car->model,
+            'year' => $car->year,
+            'car_type' => $car->car_type,
+            'daily_rent_price' => $car->daily_rent_price,
+            'availability' => $car->availability,
+            'image' => $car->image ? asset('storage/' . $car->image) : null
+        ]);
     }
 
     /**
@@ -83,13 +96,26 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
 
         // dd($request->all());
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('cars', 'public');
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('cars', 'public');
 
-            $car->image = $imagePath;
-        }
+        //     $car->image = $imagePath;
+        // }
 
         $car->update($request->except('image'));
+
+        // Image Upload
+        if ($request->hasFile('image')) {
+            if ($car->image) {
+                Storage::delete('public/' . $car->image); // Delete old image
+            }
+
+            $imagePath = $request->file('image')->store('car_images', 'public');
+            $car->image = $imagePath;
+            $car->save();
+        }
+
+
 
         return response()->json(['success' => 'Car updated successfully!']);
     }
