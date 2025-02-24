@@ -8,8 +8,19 @@
             <li class="nav-item"><a class="nav-link"  href="{{ route('reantalPage.index') }}">Rentals</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
             @auth
-                <li class="nav-item"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
+
+               <?php   $user = Auth::user() ?>
+               @if ($user->role === 'admin')
+               <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+               @elseif($user->role === 'customer')
+
+                <li class="nav-item"><a class="nav-link" href="{{ route('customer.dashboard') }}">Dashboard</a></li>
+                @endif
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="nav-link btn btn-link" type="submit">Logout</button>
+                </form>
+
             @else
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>

@@ -41,6 +41,16 @@ class CarFrnController extends Controller
 
     }
 
+    public function showCarDetails($id){
+
+        $cars = Car::where('availability', 1)->latest()->limit(4)->get();
+
+        $car_details = Car::findOrFail($id);
+
+        return view('frontend.details',compact('cars','car_details'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

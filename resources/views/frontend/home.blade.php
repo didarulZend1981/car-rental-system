@@ -10,9 +10,9 @@
                 <div class="card-body">
                     <h5>{{ $car->name }}- ({{ $car->brand }})</h5>
                     <p>Daily Rent: ${{ $car->daily_rent_price }}</p>
-                    <a href="#" class="btn btn-primary">Book Now</a>
 
-                    {{-- <a href="{{ route('rentals.index') }}" class="btn btn-primary">Book Now</a> --}}
+
+                    <a href="{{ route('reantalPage.details', $car->id) }}" class="btn btn-primary">Book Now</a>
                 </div>
             </div>
         </div>

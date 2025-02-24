@@ -30,7 +30,8 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-Route::get('/reantalPage', [CarFrnController::class, 'index'])->name('reantalPage.index');
+Route::get('/reantal-page', [CarFrnController::class, 'index'])->name('reantalPage.index');
+Route::get('/reantal-details/{id}', [CarFrnController::class, 'showCarDetails'])->name('reantalPage.details');
 
 // About Page
 // Route::view('/about', 'about')->name('about');
@@ -44,12 +45,6 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
-
-
-
-
-
-
 
 
 

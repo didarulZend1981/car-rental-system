@@ -5,7 +5,7 @@
     <h1 class="text-center mb-4">🚗 Available Cars for Rent</h1>
 
     <!-- Search & Filter Form -->
-    <form method="GET" action="{{ route('reantalPage.index') }}" class="mb-4">
+    <form id="searchForm" method="GET" action="{{ route('reantalPage.index') }}" class="mb-4">
         <div class="row g-3">
             <!-- Search by Name or Price -->
             <div class="col-md-4">
@@ -36,10 +36,7 @@
             </div>
 
 
-            <!-- Submit Button -->
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary w-100">🔍 Search</button>
-            </div>
+
 
             <!-- Reset Button -->
             <div class="col-md-2">
@@ -61,7 +58,7 @@
                             💰 <strong>Price:</strong> ${{ $car->daily_rent_price }} per day <br>
                             📅 <strong>Availability:</strong> {{ $car->availability ? 'Available' : 'Booked' }}
                         </p>
-                        <a href="#" class="btn btn-success w-100">🚀 Book Now</a>
+                        <a href="{{ route('reantalPage.details', $car->id) }}" class="btn btn-success w-100">🚀 Book Now</a>
                     </div>
                 </div>
             </div>
@@ -78,3 +75,18 @@
     </div>
 </div>
 @endsection
+
+
+<!-- JavaScript for Auto Search -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('searchForm');
+        const inputs = form.querySelectorAll('input, select');
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                form.submit();
+            });
+        });
+    });
+    </script>
