@@ -14,10 +14,28 @@
             <!-- Car Information -->
             <div class="col-md-6">
                 <div class="card-body">
-                    {{-- {{ route('rentals.store', $car->id) }} --}}
-                    @if (session('error'))
-                    <div class="alert alert-danger">{{ session('error') }}</div>
-                    @endif
+
+                    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-warning">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
                     <form method="POST" action="{{ route('rentals.store', $car_details->id) }}">
                         @csrf
                     <h2 class="card-title">{{ $car_details->name }} ({{ $car_details->car_type }})</h2>
@@ -26,11 +44,7 @@
                     <p class="card-text"><strong>Availability:</strong> {{ $car_details->availability ? '✅ Available' : '❌ Booked' }}</p>
                     <p class="card-text">{{ $car_details->description ?? 'No description available.' }}</p>
 
-                    <!-- Booking Button -->
-                    {{-- <a href="{{ route('rentals.book', $car_details->id) }}" class="btn btn-success">🚀 Book This Car</a>
-                    <a href="{{ route('rentals.index') }}" class="btn btn-secondary">⬅ Back to Rentals</a> --}}
 
-                    {{-- <a href="#" class="btn btn-success">🚀 Book This Car</a> --}}
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Start Date:</label>
                         <input type="date" name="start_date" class="form-control" required>
