@@ -3,8 +3,13 @@
 
 
 @push('css')
-<link href="{{ asset('backend') }}/lib/spectrum/spectrum.css" rel="stylesheet">
 
+<link href="{{ asset('backend') }}/lib/datatables/jquery.dataTables.css" rel="stylesheet">
+	<link href="{{ asset('backend') }}/lib/select2/css/select2.min.css" rel="stylesheet">
+
+
+	<!-- Starlight CSS -->
+	<link rel="stylesheet" href="{{ asset('backend') }}/css/starlight.css">
 
 @endpush
 @section('sl-mainpanel')
@@ -32,7 +37,7 @@
 
 
 
-        <div class="row row-sm mg-t-20">
+
 
             <div class="container">
                 <div class="row">
@@ -55,7 +60,10 @@
 
 
 
-                    <table class="table table-wrapper" id="tableData">
+
+            </div>
+
+            <table class="table table-wrapper display responsive" id="datatable1">
                         <thead>
                             <tr class="bg-light">
                                 <th>SL</th>
@@ -101,10 +109,11 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
 
             </div>
-        </div>
+
+
+
 
 
 
@@ -114,13 +123,15 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('backend') }}/lib/jquery-ui/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
 
     $(function(){
      'use strict';
 
-     $('#tableData').DataTable({
+     $('#datatable1').DataTable({
        responsive: true,
        language: {
          searchPlaceholder: 'Search...',

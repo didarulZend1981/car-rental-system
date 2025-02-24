@@ -18,9 +18,9 @@
     </head>
     <body>
         @include('frontend.partials.navbar')
-        
 
-        <div class="container mt-4">
+
+        <div class="container">
             @yield('content')
         </div>
 

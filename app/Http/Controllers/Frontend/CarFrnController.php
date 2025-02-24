@@ -14,6 +14,15 @@ class CarFrnController extends Controller
     public function index(Request $request){
 
         $query = Car::where('availability', 1)->with('rentals');
+        // $cars=Car::where('availability', 1)->get('car_type');
+        $uniqe_car_type_cars = Car::where('availability', 1)
+            ->distinct()
+            ->pluck('car_type');
+        $uniqe_brand_cars = Car::where('availability', 1)
+            ->distinct()
+            ->pluck('brand');
+
+
 
         // Filter by car type if provided
         if ($request->has('car_type') && $request->car_type) {
@@ -31,12 +40,11 @@ class CarFrnController extends Controller
         }
 
         // Paginate the results
-        $cars = $query->orderBy('id', 'desc')->paginate(3);
+        $cars = $query->orderBy('id', 'desc')->paginate(6);
 
 
 
-
-        return view('frontend.rentals',compact('cars'));
+        return view('frontend.rentals',compact('cars','uniqe_brand_cars','uniqe_car_type_cars'));
 
 
     }

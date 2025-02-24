@@ -27,19 +27,54 @@
 
   <div class="sl-pagebody">
     <div class="sl-page-title">
-      <h5>Data Table</h5>
-      <p>DataTables is a plug-in for the jQuery Javascript library.</p>
-    </div><!-- sl-page-title -->
-
-    <div class="card pd-20 pd-sm-40">
-      <h6 class="card-body-title">Basic Responsive DataTable</h6>
-      <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
 
 
+        <div class="row">
+            <!-- Total Cars Card -->
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Cars</h5>
+                        <h3 class="display-4">{{$cars}}</h3>
+                        <p class="text-muted">Total cars in the system</p>
+                    </div>
+                </div>
+            </div>
 
-      <h5 class="modal-title" id="exampleModalLabel">Totall Cars-{{$cars}}</h5>
-      <h5 class="modal-title" id="exampleModalLabel">Avilable Cars -{{$cars-$rent_count}}</h5>
-      <h5 class="modal-title" id="exampleModalLabel">Rent-{{$rent_count}}</h5>
+            <!-- Available Cars Card -->
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Available Cars</h5>
+                        <h3 class="display-4">{{$cars-$rent_count}}</h3>
+                        <p class="text-muted">Cars available for rent</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rented Cars Card -->
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Rented Cars</h5>
+                        <h3 class="display-4">{{$rent_count}}</h3>
+                        <p class="text-muted">Cars currently rented</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

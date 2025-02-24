@@ -42,7 +42,7 @@
                 <h2>Manage <b>Rental</b></h2>
             </div>
             <div class="col-sm-2">
-                <a href="{{ route('admin.rentals.create') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add New Rental</span></a>
+                <a href="{{ route('admin.rentals.create') }}" class="btn btn-success"><i class="fa fa-plus"></i><span>Add New Rental</span></a>
             </div>
         </div>
     </div>
@@ -75,9 +75,9 @@
                 <td>{{ ucfirst($rental->status) }}</td>
 
             <td>
-                <a href="{{ route('admin.rentals.edit',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Edit</a>
-                <a href="{{ route('admin.rentals.show',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Show</a>
-                <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+                <a href="{{ route('admin.rentals.edit',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit"></i><i class="fa fa-pencil"></i></a>
+                <a href="{{ route('admin.rentals.show',$rental->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="show"></i><i class="fa fa-eye"></i></a>
+                <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete"></i><i class="fa fa-close"></i></a>
             </td>
         </tr>
 
@@ -88,7 +88,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Delete rental</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
                     </div>
                     <div class="modal-body">
                         <h3 class=" mt-3 text-warning">Delete !</h3>

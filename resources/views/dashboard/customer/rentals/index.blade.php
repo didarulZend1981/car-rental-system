@@ -19,21 +19,14 @@
 @endpush
 @section('sl-mainpanel')
 
-<nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="index.html">Starlight</a>
-    <a class="breadcrumb-item" href="index.html">Tables</a>
-    <span class="breadcrumb-item active">Data Table</span>
-  </nav>
+
 
   <div class="sl-pagebody">
     <div class="sl-page-title">
-      <h5>Data Table</h5>
-      <p>DataTables is a plug-in for the jQuery Javascript library.</p>
+
     </div><!-- sl-page-title -->
 
     <div class="card pd-20 pd-sm-40">
-      <h6 class="card-body-title">Basic Responsive DataTable</h6>
-      <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
 
       <table class="table table-wrapper display responsive" id="datatable1">
         <thead>
@@ -69,7 +62,7 @@
             <td>{{ $rental->start_date}}</td>
             <td>{{ $rental->end_date}}</td>
             <td>
-            <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+            <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteRentalsModal{{ $rental->id }}"><i class="fa fa-close"  data-toggle="tooltip" title="Delete"></i></a>
             </td>
 
         </tr>

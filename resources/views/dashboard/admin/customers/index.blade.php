@@ -42,14 +42,14 @@
                 <h2>Manage <b>Customer</b></h2>
             </div>
             <div class="col-sm-2">
-                <a href="{{ route('admin.customers.create') }}" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add New Customer</span></a>
+                <a href="{{ route('admin.customers.create') }}" class="btn btn-success"><i class="fa fa-plus"></i><span>Add New Customer</span></a>
             </div>
         </div>
     </div>
 
 
 
-            <table class="table table-wrapper" id="tableData">
+    <table class="table table-wrapper display responsive" id="datatable1">
                 <thead>
                     <tr class="bg-light">
                         <th>SL</th>
@@ -69,9 +69,9 @@
                     <td>{{ $customer->phone}}</td>
                     <td>{{ $customer->address}}</td>
                     <td>
-                        <a href="{{ route('admin.customers.edit',$customer->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>edit</a>
-                        <a href="{{ route('admin.customers.show',$customer->id) }}" class="show"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Show</a>
-                        <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteCustomersModal{{ $customer->id }}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>Delete</a>
+                        <a href="{{ route('admin.customers.edit',$customer->id) }}" class="edit"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ route('admin.customers.show',$customer->id) }}" class="show"><i class="fa fa-eye"></i></a>
+                        <a href="#" class="delete" data-bs-toggle="modal" data-bs-target="#deleteCustomersModal{{ $customer->id }}"><i class="fa fa-close"></i></a>
                     </td>
                 </tr>
 
@@ -85,7 +85,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
                             </div>
                             <div class="modal-body">
                                 <h3 class=" mt-3 text-warning">Delete !</h3>
@@ -129,33 +129,32 @@
 
 
 
-
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 
-$(function(){
- 'use strict';
+    $(function(){
+     'use strict';
 
- $('#tableData').DataTable({
-   responsive: true,
-   language: {
-     searchPlaceholder: 'Search...',
-     sSearch: '',
-     lengthMenu: '_MENU_ items/page',
-   }
- });
+     $('#datatable1').DataTable({
+       responsive: true,
+       language: {
+         searchPlaceholder: 'Search...',
+         sSearch: '',
+         lengthMenu: '_MENU_ items/page',
+       }
+     });
 
 
 
- // Select2
- $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+     // Select2
+     $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
 
- });
+     });
 
-</script>
+    </script>
 
 
 @endpush

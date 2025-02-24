@@ -41,21 +41,28 @@
                     <h2 class="card-title">{{ $car_details->name }} ({{ $car_details->car_type }})</h2>
                     <p class="card-text"><strong>Brand:</strong> {{ $car_details->brand }}</p>
                     <p class="card-text"><strong>Daily Rent:</strong> ${{ $car_details->daily_rent_price }} per day</p>
-                    <p class="card-text"><strong>Availability:</strong> {{ $car_details->availability ? '✅ Available' : '❌ Booked' }}</p>
+                    <p class="card-text"><strong>Availability:</strong> {{ $car_details->availability ? 'Available' : 'Booked' }}</p>
                     <p class="card-text">{{ $car_details->description ?? 'No description available.' }}</p>
 
 
+
+                    @if(Auth::user())
                     <div class="mb-3">
                         <label for="start_date" class="form-label">Start Date:</label>
                         <input type="date" name="start_date" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="end_date" class="form-label">End Date:</label>
-                        <input type="date" name="end_date" class="form-control" required>
+
+                            <label for="end_date" class="form-label">End Date:</label>
+                            <input type="date" name="end_date" class="form-control" required>
+
+
                     </div>
                     <button type="submit" class="btn btn-primary">Book Now</button>
-
+                    @else
+                    <button  class="btn btn-primary">Login First</button>
+                    @endif
                     <a href="{{ route('reantalPage.index') }}" class="btn btn-secondary">⬅ Back to Rentals</a>
                 </form>
                 </div>

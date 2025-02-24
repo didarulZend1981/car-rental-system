@@ -26,21 +26,28 @@
 @section('sl-mainpanel')
 
 <nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="index.html">Starlight</a>
-    <a class="breadcrumb-item" href="index.html">Tables</a>
-    <span class="breadcrumb-item active">Data Table</span>
+
   </nav>
 
   <div class="sl-pagebody">
 
     <div class="card pd-20 pd-sm-40">
-    <h2>Manage Cars</h2>
-    <div class="table-wrapper">
 
-    <button data-bs-toggle="modal" data-bs-target="#addCarModal">Add New Car</button>
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-10">
+                <h2>Manage <b>Cars</b></h2>
+            </div>
+            <div class="col-sm-2">
+                <button data-bs-toggle="modal" data-bs-target="#addCarModal" class="btn btn-success mb-2"><i class="fa fa-plus"></i> Add New Car</button>
+            </div>
+        </div>
+    </div>
 
 
-        <table class="table table-wrapper" id="datatable1">
+
+
+        <table class="table table-wrapper display responsive" id="datatable1">
         <thead>
             <tr>
                 <th>ID</th>
@@ -73,8 +80,8 @@
                     <td>${{ $car->daily_rent_price }}</td>
                     <td>{{ $car->availability ? 'Yes' : 'No' }}</td>
                     <td>
-                        <button onclick="editCar({{ $car->id }})">Edit</button>
-                        <button onclick="deleteCar({{ $car->id }})">Delete</button>
+                        <button onclick="editCar({{ $car->id }})"><i class="fa fa-pencil"></i></button>
+                        <button onclick="deleteCar({{ $car->id }})"><i class="fa fa-close"></i></button>
                     </td>
                 </tr>
             @endforeach
@@ -91,7 +98,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Add New Car</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -143,7 +150,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editCarModalLabel">Edit Car</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i></button>
             </div>
             <div class="modal-body">
                 <div class="container">
@@ -228,7 +235,7 @@
 
         function editCar(id) {
     $.get('/cars/' + id + '/edit', function (data) {
-        // Data Input Field এ বসানো
+
         $('#editCarId').val(data.id);
         $('#editCarName').val(data.name);
         $('#editCarBrand').val(data.brand);
@@ -262,17 +269,17 @@ $('#editCarImage').on('change', function (e) {
 
 
 $('#editCarForm').submit(function (event) {
-    event.preventDefault(); // Prevent Form Default Submit
+    event.preventDefault();
 
     let id = $('#editCarId').val();
-    let formData = new FormData(this); // FormData ব্যবহার করে ফাইল সহ সব ডেটা সংগ্রহ
+    let formData = new FormData(this);
 
     $.ajax({
-        url: '/cars/' + id + '/update', // Update Route
-        type: 'POST', // Laravel এ PUT/POST এর মতো কাজ করে
+        url: '/cars/' + id + '/update',
+        type: 'POST',
         data: formData,
-        processData: false,  // ফাইল আপলোডের জন্য এটি false রাখতে হবে
-        contentType: false,  // ফাইল আপলোডের জন্য এটি false রাখতে হবে
+        processData: false,
+        contentType: false,
         success: function (res) {
             Swal.fire('Updated!', res.success, 'success').then(() => {
                 $('#editCarModal').modal('hide');

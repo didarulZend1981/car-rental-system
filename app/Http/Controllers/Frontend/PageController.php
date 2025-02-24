@@ -12,7 +12,7 @@ class PageController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-        $cars = Car::where('availability', 1)->latest()->limit(6)->get();
+        $cars = Car::where('availability', 1)->latest()->paginate(6);
             // $cars = Car::all();
             // dd($cars);
             return view('frontend.home', compact('cars'));

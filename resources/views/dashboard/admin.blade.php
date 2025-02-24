@@ -19,28 +19,76 @@
 @endpush
 @section('sl-mainpanel')
 
-<nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="index.html">Starlight</a>
-    <a class="breadcrumb-item" href="index.html">Tables</a>
-    <span class="breadcrumb-item active">Data Table</span>
-  </nav>
+
 
   <div class="sl-pagebody">
-    <div class="sl-page-title">
-      <h5>Data Table</h5>
-      <p>DataTables is a plug-in for the jQuery Javascript library.</p>
-    </div><!-- sl-page-title -->
+
 
     <div class="card pd-20 pd-sm-40">
-      <h6 class="card-body-title">Basic Responsive DataTable</h6>
-      <p class="mg-b-20 mg-sm-b-30">Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+      <h6 class="card-body-title">SUMAREY OF RENT A CAR</h6>
+
+
+      <div class="row">
+        <!-- Total Cars Card -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total Car</h5>
+                    <h3 class="display-4">{{$cars}}</h3>
+                    <p class="text-muted">Total Car in the system</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Available Cars Card -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Available Cars</h5>
+                    <h3 class="display-4">{{$cars-$rent_count}}</h3>
+                    <p class="text-muted">Cars available for rent</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rented Cars Card -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Rented Cars</h5>
+                    <h3 class="display-4">{{$rent_count}}</h3>
+                    <p class="text-muted">Cars currently rented</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Earn total</h5>
+                    <h3 class="display-4">{{$total_earning}}</h3>
+                    <p class="text-muted">Totall earn </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Total Customer</h5>
+                    <h3 class="display-4">{{$customer_count}}</h3>
+                    <p class="text-muted">Total Customer in the system</p>
+                </div>
+            </div>
+        </div>
 
 
 
 
-      <h5 class="modal-title" id="exampleModalLabel">Customer-{{$customer_count}}</h5>
-      <h5 class="modal-title" id="exampleModalLabel">Rent-{{$rent_count}}</h5>
-      <h5 class="modal-title" id="exampleModalLabel">Earn total-{{$total_earning}}</h5>
+
+
+
 
 
 

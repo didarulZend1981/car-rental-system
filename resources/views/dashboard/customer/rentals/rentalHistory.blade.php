@@ -26,9 +26,7 @@
 @section('sl-mainpanel')
 
 <nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="index.html">Starlight</a>
-    <a class="breadcrumb-item" href="index.html">Tables</a>
-    <span class="breadcrumb-item active">Data Table</span>
+    
   </nav>
 
   <div class="sl-pagebody">
@@ -47,7 +45,7 @@
 
 
 
-   
+
         <table class="table table-wrapper display responsive" id="tableData">
         <thead>
             <tr class="bg-light">

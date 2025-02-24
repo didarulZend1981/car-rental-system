@@ -2,7 +2,10 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-center mb-4">🚗 Available Cars for Rent</h1>
+
+    <div class="text-center my-5">
+        <h1 class="display-4 text-warning font-weight-bold">🚗 Available Cars for Rent</h1>
+          </div>
 
     <!-- Search & Filter Form -->
     <form id="searchForm" method="GET" action="{{ route('reantalPage.index') }}" class="mb-4">
@@ -14,24 +17,31 @@
 
             <!-- Filter by Car Type -->
             <div class="col-md-3">
+                {{-- @dd($uniqe_car_type_cars); --}}
+
                 <select name="brand" class="form-select">
+
                     <option value="">Filter by brand</option>
-                    <option value="Ford" {{ request('brand') == 'Ford' ? 'selected' : '' }}>Ford</option>
-                    <option value="Hyundai" {{ request('brand') == 'Hyundai' ? 'selected' : '' }}>Hyundai</option>
-                    <option value="Isuzu" {{ request('brand') == 'Isuzu' ? 'selected' : '' }}>Isuzu</option>
-                    <option value="Kia" {{ request('brand') == 'Kia' ? 'selected' : '' }}>Kia</option>
-                    <option value="Nissan" {{ request('brand') == 'Nissan' ? 'selected' : '' }}>Nissan</option>
-                    <option value="Toyota" {{ request('brand') == 'Toyota' ? 'selected' : '' }}>Toyota</option>
+
+                    @foreach ($uniqe_brand_cars as $car_ui)
+                    <option value="{{ $car_ui }}" {{ request('brand') == $car_ui ? 'selected' : '' }}>
+                        {{ $car_ui }}
+                    </option>
+                    @endforeach
+
                 </select>
             </div>
 
             <div class="col-md-3">
                 <select name="car_type" class="form-select">
                     <option value="">Filter by Car Type</option>
-                    <option value="Sedan" {{ request('car_type') == 'Sedan' ? 'selected' : '' }}>Sedan</option>
-                    <option value="SUV" {{ request('car_type') == 'SUV' ? 'selected' : '' }}>SUV</option>
-                    <option value="Hatchback" {{ request('car_type') == 'Hatchback' ? 'selected' : '' }}>Hatchback</option>
-                    <option value="Pickup" {{ request('car_type') == 'Pickup' ? 'selected' : '' }}>Pickup</option>
+                    @foreach ($uniqe_car_type_cars as $car_ui)
+                    <option value="{{ $car_ui }}" {{ request('brand') == $car_ui ? 'selected' : '' }}>
+                        {{ $car_ui }}
+                    </option>
+                    @endforeach
+
+
                 </select>
             </div>
 
@@ -71,9 +81,26 @@
 
     <!-- Pagination -->
     <div class="d-flex justify-content-center mt-4">
-        {{ $cars->links('pagination::bootstrap-5') }}
+        <nav>
+            <!-- Custom Bootstrap Pagination -->
+            <ul class="pagination pagination-lg">
+                <li class="page-item {{ $cars->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $cars->previousPageUrl() }}" tabindex="-1">Previous</a>
+                </li>
+                @foreach ($cars->getUrlRange(1, $cars->lastPage()) as $page => $url)
+                    <li class="page-item {{ $page == $cars->currentPage() ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+                <li class="page-item {{ !$cars->hasMorePages() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $cars->nextPageUrl() }}">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
+
+
 @endsection
 
 
