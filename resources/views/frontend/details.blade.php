@@ -14,6 +14,12 @@
             <!-- Car Information -->
             <div class="col-md-6">
                 <div class="card-body">
+                    {{-- {{ route('rentals.store', $car->id) }} --}}
+                    @if (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    <form method="POST" action="{{ route('rentals.store', $car_details->id) }}">
+                        @csrf
                     <h2 class="card-title">{{ $car_details->name }} ({{ $car_details->car_type }})</h2>
                     <p class="card-text"><strong>Brand:</strong> {{ $car_details->brand }}</p>
                     <p class="card-text"><strong>Daily Rent:</strong> ${{ $car_details->daily_rent_price }} per day</p>
@@ -24,8 +30,20 @@
                     {{-- <a href="{{ route('rentals.book', $car_details->id) }}" class="btn btn-success">🚀 Book This Car</a>
                     <a href="{{ route('rentals.index') }}" class="btn btn-secondary">⬅ Back to Rentals</a> --}}
 
-                    <a href="#" class="btn btn-success">🚀 Book This Car</a>
+                    {{-- <a href="#" class="btn btn-success">🚀 Book This Car</a> --}}
+                    <div class="mb-3">
+                        <label for="start_date" class="form-label">Start Date:</label>
+                        <input type="date" name="start_date" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="end_date" class="form-label">End Date:</label>
+                        <input type="date" name="end_date" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Book Now</button>
+
                     <a href="{{ route('reantalPage.index') }}" class="btn btn-secondary">⬅ Back to Rentals</a>
+                </form>
                 </div>
             </div>
         </div>

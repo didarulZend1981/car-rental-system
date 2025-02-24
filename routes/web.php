@@ -6,8 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RentalController;
 use App\Http\Controllers\Frontend\CarFrnController;
 use App\Http\Controllers\Frontend\PageController;
-
-
+use App\Http\Controllers\Frontend\RentalFrnController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +32,8 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/reantal-page', [CarFrnController::class, 'index'])->name('reantalPage.index');
 Route::get('/reantal-details/{id}', [CarFrnController::class, 'showCarDetails'])->name('reantalPage.details');
 
+
+
 // About Page
 // Route::view('/about', 'about')->name('about');
 
@@ -51,6 +52,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    // Route::get('/reantal-details/{id}', [CarFrnController::class, 'showCarDetails'])->name('reantalPage.details');
+
+    Route::post('/rentals/store/{carId}', [RentalFrnController::class, 'store'])->name('rentals.store');
 });
 
 require __DIR__.'/auth.php';
