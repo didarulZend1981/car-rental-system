@@ -27,7 +27,7 @@ class CustomerController extends Controller
         $id=$user->id;
         $rentals = Rental::where('user_id',"=",$user->id)
         ->where('status',"!=","completed")
-        ->where('status',"!=","ongoing")
+
         ->get();
         return view('dashboard.customer.rentals.index',compact('rentals'));
     }
