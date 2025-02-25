@@ -1,66 +1,89 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+#####🚗 car rental system
+==============================
+A complete Car Renting System built using Laravel Blade. This monolithic project offers seamless car rental management for customers and admins, ensuring a smooth and efficient experience.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+------------------------------------------------------
+###📺 Project Overview (full reivew video)
+Full Review Video: 
+---------------------------------------------------
+📌 Features
+===================
+🧑‍💼 Customer
+-------------
+Car Rental Creation: Customers can rent a car by creating a rental request. The request includes the car name, rental duration , and additional data. After submitting the request, confirmation email will be sent to the customer.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Authentication: Secure login and registration for customers.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Access Control: Customers must be logged in to create a rental.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Rental Tracking: Customers can track their rental status from the dashboard.
 
-## Learning Laravel
+Profile Management: Update personal information from the profile section.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+👨‍💻 Admin
+--------
+Admin Authentication: Secure login for admin (No registration allowed).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Car Management: Create, edit, and delete cars available for rent.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Rental Management: Track and update customer rental statuses.
+Custom Rental Creation: Admin can manually create rentals for customers.
 
-## Laravel Sponsors
+View Rental History: Access complete customer rental histories.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+###🛠️ Tech Stack
+-------------
+Backend: Laravel (PHP Framework)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Frontend: laravel blade & javascript
 
-## Contributing
+Database: MySQL
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Package Management: Composer & npm
 
-## Code of Conduct
+🚀 Installation Guide
+Clone the Repository:
+git clone https://github.com/didarulZend1981/car-rental-system.git
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+cd Rent_A_Car
+Set up Environment:
+--------------------
+###cp .env.example .env
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+php artisan key:generate
 
-## License
+php artisan storage:link
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Install Dependencies:
+
+composer install
+
+npm install
+==============
+Database Configuration:
+
+Update .env with your database credentials.
+
+DB_DATABASE=your_database_name
+
+DB_USERNAME=your_username
+
+DB_PASSWORD=your_password
+
+Build Frontend:
+
+npm run build
+
+Start the Application:
+
+php artisan serve
+
+📄 Usage
+Customers must register and log in to rent a car.
+Admins manage cars and track customer rentals.
+Admins can update the status of a rental (e.g., Pending, Ongoing, Completed).
+
+import car-rental.sql 
