@@ -5,7 +5,7 @@ A complete Car Renting System built using Laravel Blade. This monolithic project
 
 ------------------------------------------------------
 ###📺 Project Overview (full reivew video)
-Full Review Video: 
+Demo Video: https://drive.google.com/file/d/1k2Qcf8OQrYcq3wW6J89ZKQ2msnwI2Z1e/view?usp=sharing
 ---------------------------------------------------
 📌 Features
 ===================
@@ -86,4 +86,17 @@ Customers must register and log in to rent a car.
 Admins manage cars and track customer rentals.
 Admins can update the status of a rental (e.g., Pending, Ongoing, Completed).
 
+
+
 import car-rental.sql 
+
+Customer
+
+email:didarul1981@gmail.com
+
+Admin
+
+email:didarul1981admin@gmail.com
+
+both pass:12345678
+
