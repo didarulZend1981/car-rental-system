@@ -48,7 +48,7 @@ Clone the Repository:
 git clone https://github.com/didarulZend1981/car-rental-system.git
 
 
-cd Rent_A_Car
+cd car-rental-system
 Set up Environment:
 --------------------
 ###cp .env.example .env
