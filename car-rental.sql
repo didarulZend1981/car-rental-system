@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2025 at 11:31 AM
+-- Generation Time: Feb 25, 2025 at 03:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,11 +50,10 @@ INSERT INTO `cars` (`id`, `name`, `brand`, `model`, `year`, `car_type`, `daily_r
 (1, 'X-Trail', 'Nissan', '2023', 2022, 'SUV', 3500.00, 1, 'car_images/PdaOBo3nsRnyXnNpOSevjfcpNFy3SJoAV7S1p8FD.webp', '2025-02-17 13:45:38', '2025-02-23 05:45:56', 'ongoing'),
 (2, 'Fortuner', 'Toyota', '2024', 2023, 'SUV', 5000.00, 1, 'car_images/e7MZ4gPKohS4aTfDhU0JHtwuvxyruQAnAOmZ7PE1.webp', '2025-02-17 13:47:11', '2025-02-23 05:47:09', NULL),
 (3, 'Tucson', 'Hyundai', '2022', 2022, 'SUV', 4000.00, 0, 'car_images/Keq5q6OIe9S5Ckp2aXfHcpxIBEqs58TH2yzr7U18.webp', '2025-02-17 13:56:34', '2025-02-23 05:48:39', NULL),
-(5, 'Sportage', 'Kia', '2023', 2023, 'SUV', 4500.00, 0, 'car_images/sQpnUXujsocfFje2YvxuKiA62NSqMKFSDMMeOKUC.jpg', '2025-02-17 14:28:48', '2025-02-23 05:49:56', NULL),
-(6, 'Santa Fe', 'Hyundai', '2023', 2023, 'SUV', 4500.00, 0, 'car_images/cc2j6ARi8Rq1s7hTIyGDA8tn95zuyPTGt7ICUfrf.png', '2025-02-17 15:11:19', '2025-02-23 05:53:45', NULL),
+(5, 'Sportage', 'Kia', '2023', 2023, 'SUV', 4500.00, 1, 'car_images/sQpnUXujsocfFje2YvxuKiA62NSqMKFSDMMeOKUC.jpg', '2025-02-17 14:28:48', '2025-02-25 05:08:38', NULL),
+(6, 'Santa Fe', 'Hyundai', '2023', 2023, 'SUV', 4500.00, 1, 'car_images/cc2j6ARi8Rq1s7hTIyGDA8tn95zuyPTGt7ICUfrf.png', '2025-02-17 15:11:19', '2025-02-25 08:11:56', NULL),
 (7, 'Corolla Altis', 'Toyota', '2023', 2022, 'Sedan', 3000.00, 0, 'car_images/EBwATr1xdnOAtQ4bcxATZdhqG5oSdS4EFzZbjWMU.jpg', '2025-02-17 15:15:06', '2025-02-23 05:55:42', NULL),
 (8, 'Elantra', 'Hyundai', '2024', 2023, 'Sedan', 3200.00, 0, 'car_images/bViicTQxp1FqgwSRLyN2asciAyPso7gUCfGmvFIl.avif', '2025-02-17 15:16:00', '2025-02-23 05:58:41', NULL),
-(9, 'Sylphy', 'Nissan', '2022', 2022, 'Sedan', 2900.00, 0, 'car_images/SbVqZtc1AxUCYSR4RKi7tdJNyuRTrATqLel9a074.jpg', '2025-02-17 15:18:00', '2025-02-23 06:00:23', NULL),
 (10, 'Cerato', 'Kia', '2023', 2023, 'Sedan', 3100.00, 0, 'car_images/WOwHdDYsUiqPWnOzF3zXFN1NgYNcoYI8vs8UNkqQ.jpg', '2025-02-17 15:18:21', '2025-02-23 06:01:47', NULL),
 (13, 'Camry', 'Toyota', '2023', 2003, 'Sedan', 3500.00, 1, 'car_images/JQ8KxFWwodcWRoI2aqja33NU8RQROx7gzZP1lKHP.avif', '2025-02-17 15:50:43', '2025-02-23 06:06:08', NULL),
 (14, 'Yaris', 'Toyota', '2022', 2022, 'Hatchback', 2500.00, 1, 'car_images/YUknxmnQKWGlTBNupQczTFF35RP4sijkGsNHc3Lv.webp', '2025-02-17 15:51:29', '2025-02-23 06:07:20', NULL),
@@ -66,10 +65,7 @@ INSERT INTO `cars` (`id`, `name`, `brand`, `model`, `year`, `car_type`, `daily_r
 (28, 'Santa Cruz', 'Hyundai', '2022', 2022, 'Pickup', 5700.00, 0, 'car_images/ljfRMR7UyPtjsLg1SFcIHVlmROo97MCDs2eGQeha.jpg', '2025-02-17 16:18:59', '2025-02-23 06:18:14', NULL),
 (29, 'Ranger', 'Ford', '2024', 2023, 'Pickup', 6200.00, 0, 'car_images/dyuN0i715ax99a8xeGOO7looRBUWtbenhXNUuMQW.jpg', '2025-02-17 21:48:05', '2025-02-23 06:20:07', NULL),
 (30, 'D-Max', 'Isuzu', '2023', 2023, 'Pickup', 5900.00, 0, 'car_images/c6fJ7QCSpKWDbhp61H6KguqzuiNosZZsvNeRtnFa.avif', '2025-02-17 22:26:17', '2025-02-23 06:21:57', NULL),
-(31, 'Seltos', 'Kia', '2023', 2023, 'SUV', 4300.00, 0, 'car_images/PkPaVSCQfgVt2O41RHAfWvK4Vt1LpdEbeLxaZZtf.jpg', '2025-02-17 22:30:58', '2025-02-23 06:25:00', NULL),
-(33, 'Mohammad Didarul Islam', 'Enim magna consequun', 'Ipsum nisi sed ut c', 344, '111', 999.00, 0, 'cars/PlB6ORHCe4abazcHNKtjYBAn4Ckmjd8ORDBrtlqX.png', '2025-02-21 09:55:47', '2025-02-23 06:25:28', NULL),
-(34, 'Mohammad Didarul Islam', 'Enim magna consequun', 'Ipsum nisi sed ut c', 344, '111', 999.00, 0, 'cars/ABQk0yirb2swr5QF8OtcBjM8vvLzCQpvjoZGmlwC.png', '2025-02-21 10:26:57', '2025-02-23 06:25:44', NULL),
-(36, 'Deborah Benjamin', 'Qui sed non praesent', 'Et maxime veniam in', 2005, 'A maiores quam odit', 407.00, 0, 'cars/4xjGd0KwvvqbDmleuFHTW4K5E4TMJ09CiOkz2fwa.png', '2025-02-21 14:16:57', '2025-02-21 14:16:57', NULL);
+(31, 'Seltos', 'Kia', '2023', 2023, 'SUV', 4300.00, 1, 'car_images/PkPaVSCQfgVt2O41RHAfWvK4Vt1LpdEbeLxaZZtf.jpg', '2025-02-17 22:30:58', '2025-02-25 08:11:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -166,19 +162,15 @@ CREATE TABLE `rentals` (
 --
 
 INSERT INTO `rentals` (`id`, `user_id`, `car_id`, `start_date`, `end_date`, `total_cost`, `status`, `created_at`, `updated_at`) VALUES
-(24, 1, 25, '2025-02-23', '2025-02-27', 24000.00, 'ongoing', '2025-02-23 06:42:59', '2025-02-23 06:42:59'),
-(25, 1, 2, '2025-02-24', '2025-02-26', 10000.00, 'completed', '2025-02-23 06:48:17', '2025-02-23 07:01:26'),
 (26, 2, 3, '2025-02-24', '2025-02-28', 16000.00, 'pendding', '2025-02-23 06:50:05', '2025-02-23 06:50:05'),
 (28, 2, 5, '2025-02-24', '2025-02-26', 9000.00, 'pendding', '2025-02-23 06:52:37', '2025-02-23 06:52:37'),
 (29, 2, 3, '2025-02-24', '2025-02-27', 12000.00, 'pendding', '2025-02-23 07:08:15', '2025-02-23 07:08:15'),
 (30, 2, 25, '2025-02-23', '2025-02-28', 30000.00, 'pendding', '2025-02-23 07:08:55', '2025-02-23 07:08:55'),
 (31, 3, 15, '2025-02-23', '2025-02-28', 13000.00, 'pendding', '2025-02-23 07:09:38', '2025-02-23 07:09:38'),
-(32, 1, 7, '2025-02-23', '2025-02-27', 12000.00, 'ongoing', '2025-02-23 07:10:02', '2025-02-23 07:12:06'),
 (35, 2, 16, '2025-02-24', '2025-02-27', 7200.00, 'pendding', '2025-02-24 05:06:01', '2025-02-24 05:06:01'),
-(38, 2, 13, '2025-02-25', '2025-02-27', 7000.00, 'pendding', '2025-02-24 05:12:42', '2025-02-24 05:12:42'),
-(41, 1, 27, '2025-02-28', '2025-03-01', 5800.00, 'pendding', '2025-02-24 05:50:44', '2025-02-24 05:50:44'),
-(42, 1, 15, '2025-03-08', '2025-03-22', 36400.00, 'pendding', '2025-02-24 05:55:58', '2025-02-24 05:55:58'),
-(43, 1, 25, '2025-03-28', '2025-03-31', 18000.00, 'pendding', '2025-02-24 06:24:22', '2025-02-24 06:24:22');
+(38, 2, 13, '2025-02-25', '2025-02-27', 7000.00, 'ongoing', '2025-02-24 05:12:42', '2025-02-25 08:19:38'),
+(51, 1, 31, '2025-02-25', '2025-02-28', 12900.00, 'completed', '2025-02-25 08:34:31', '2025-02-25 08:36:06'),
+(52, 1, 27, '2025-02-25', '2025-03-01', 23200.00, 'ongoing', '2025-02-25 08:34:52', '2025-02-25 08:35:56');
 
 -- --------------------------------------------------------
 
@@ -274,7 +266,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -298,13 +290,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `rentals`
 --
 ALTER TABLE `rentals`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
