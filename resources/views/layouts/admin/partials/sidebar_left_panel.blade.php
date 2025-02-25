@@ -56,12 +56,12 @@
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
 
-        <a href="{{route('admin.test')}}" class="sl-menu-link @if($segment1==='admin') active show-sub @else  @endif">
+        {{-- <a href="{{route('admin.test')}}" class="sl-menu-link @if($segment1==='admin') active show-sub @else  @endif">
             <div class="sl-menu-item">
                 <i class="fa fa-bar-chart"></i>
               <span class="menu-item-label">admin-test</span>
             </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
+        </a><!-- sl-menu-link --> --}}
 
         @elseif($user->role === 'customer')
 
@@ -89,12 +89,7 @@
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
 
-        <a href="{{route('customerTest.Test')}}" class="sl-menu-link @if($segment1==='customerTest') active show-sub @else  @endif">
-            <div class="sl-menu-item">
-              <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-              <span class="menu-item-label">customerTest</span>
-            </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
+
 
         @endif
 

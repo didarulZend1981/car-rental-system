@@ -18,14 +18,16 @@
 
 @endpush
 @section('sl-mainpanel')
-
+<nav class="breadcrumb sl-breadcrumb d-flex justify-content-center align-items-center">
+    <h2 class="m-0">Dashboard</h2>
+</nav>
 
 
   <div class="sl-pagebody">
 
 
     <div class="card pd-20 pd-sm-40">
-      <h6 class="card-body-title">SUMAREY OF RENT A CAR</h6>
+
 
 
       <div class="row">

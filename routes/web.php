@@ -65,7 +65,7 @@ require __DIR__.'/auth.php';
 // Customer Dashboard Route
 Route::middleware(['auth', 'customer'])->group(function () {
     Route::get('/customer/dashboard', [DashboardController::class, 'customerDashboard'])->name('customer.dashboard');
-    Route::get('/customerTest/test', [DashboardController::class, 'test'])->name('customerTest.Test');
+    // Route::get('/customerTest/test', [DashboardController::class, 'test'])->name('customerTest.Test');
     // Route::get('/rentals', [CustomerController::class, 'rentals'])->name('customers.rental');
     Route::get('/customers/rental', [CustomerController::class, 'rentals'])->name('customers.rental');
     Route::get('/rentalHistory', [CustomerController::class, 'rentalHistory'])->name('customers.rentalHistory');
@@ -82,6 +82,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/cars/{id}/edit', [CarController::class, 'edit'])->name('admin.cars.edit');
     Route::put('/cars/{id}/update', [CarController::class, 'update'])->name('admin.cars.update');
     Route::delete('/cars/{id}', [CarController::class, 'destroy'])->name('admin.cars.destroy');
+    Route::get('/cars/{id}/show', [CarController::class, 'show'])->name('admin.cars.show');
 //customer
     Route::get('/customers', [CustomerController::class, 'index'])->name('admin.customers.index');
     Route::get('/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
@@ -101,7 +102,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 
-    Route::get('/admin/test', [DashboardController::class, 'test'])->name('admin.test');
+    // Route::get('/admin/test', [DashboardController::class, 'test'])->name('admin.test');
 
 
 

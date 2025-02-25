@@ -40,9 +40,12 @@
                 <img src="{{ asset('storage/' . $car->image) }}" class="card-img-top" alt="{{ $car->name }}" style="height: 200px">
 
                 <div class="card-body">
-                    <h5>{{ $car->name }}- ({{ $car->brand }})</h5>
-                    <p>Daily Rent: ${{ $car->daily_rent_price }}</p>
 
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <p class="card-text"><strong>Name/Brand:</strong> {{ $car->name }}- ({{ $car->brand }})</p>
+                        <p class="card-text"><strong>Daily Rent:</strong> ${{ $car->daily_rent_price }}</p>
+                    </div>
 
                     <a href="{{ route('reantalPage.details', $car->id) }}" class="btn btn-primary">Book Now</a>
                 </div>

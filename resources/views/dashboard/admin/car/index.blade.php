@@ -25,9 +25,9 @@
 
 @section('sl-mainpanel')
 
-<nav class="breadcrumb sl-breadcrumb">
-
-  </nav>
+<nav class="breadcrumb sl-breadcrumb d-flex justify-content-center align-items-center">
+    <h2 class="m-0">Cars Information</h2>
+</nav>
 
   <div class="sl-pagebody">
 
@@ -81,6 +81,7 @@
                     <td>{{ $car->availability ? 'Yes' : 'No' }}</td>
                     <td>
                         <button onclick="editCar({{ $car->id }})"><i class="fa fa-pencil"></i></button>
+                        <a href="{{ route('admin.cars.show',$car->id) }}" class="edit"><i class="material-icons" data-toggle="tooltip" title="show"></i><i class="fa fa-eye"></i></a>
                         <button onclick="deleteCar({{ $car->id }})"><i class="fa fa-close"></i></button>
                     </td>
                 </tr>

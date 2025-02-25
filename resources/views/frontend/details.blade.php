@@ -38,7 +38,10 @@
 @endif
                     <form method="POST" action="{{ route('rentals.store', $car_details->id) }}">
                         @csrf
-                    <h2 class="card-title">{{ $car_details->name }} ({{ $car_details->car_type }})</h2>
+
+                    <p class="card-text"><strong>Car Name:</strong> {{ $car_details->name }}</p>
+                    <p class="card-text"><strong>Brand:</strong> {{ $car_details->brand }}</p>
+                    <p class="card-text"><strong>Car Type:</strong> {{ $car_details->car_type }}</p>
                     <p class="card-text"><strong>Brand:</strong> {{ $car_details->brand }}</p>
                     <p class="card-text"><strong>Daily Rent:</strong> ${{ $car_details->daily_rent_price }} per day</p>
                     <p class="card-text"><strong>Availability:</strong> {{ $car_details->availability ? 'Available' : 'Booked' }}</p>
@@ -63,7 +66,7 @@
                     @else
                     <button  class="btn btn-primary">Login First</button>
                     @endif
-                    <a href="{{ route('reantalPage.index') }}" class="btn btn-secondary">⬅ Back to Rentals</a>
+                    <a href="{{ route('reantalPage.index') }}" class="btn btn-secondary">Back to Rentals</a>
                 </form>
                 </div>
             </div>
@@ -71,22 +74,27 @@
     </div>
 
     <!-- Related Cars Section -->
-    <h3 class="mt-5 mb-3">🚗 Related Available Cars</h3>
+    <h3 class="mt-5 mb-3">Related Available Cars</h3>
     <div class="row">
         @forelse($cars as $car)
             <div class="col-md-3">
                 <div class="card mb-4">
                     <img src="{{ asset('storage/' . $car->image) }}" class="card-img-top" alt="{{ $car->name }}" style="height: 200px">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $car->name }}</h5>
-                        <p class="card-text">💰 ${{ $car->daily_rent_price }} per day</p>
-                        <a href="{{ route('reantalPage.details', $car->id) }}" class="btn btn-primary">🔍 View Details</a>
+
+
+
+                            <p class="card-text"><strong>Car Name:</strong> {{ $car->name }}</p>
+                            <p class="card-text"><strong>rent Rate:</strong> ${{ $car->daily_rent_price }} per day</p>
+
+
+                        <a href="{{ route('reantalPage.details', $car->id) }}" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
             </div>
         @empty
             <div class="col-12">
-                <div class="alert alert-warning">🚫 No related cars found!</div>
+                <div class="alert alert-warning">No related cars found!</div>
             </div>
         @endforelse
 

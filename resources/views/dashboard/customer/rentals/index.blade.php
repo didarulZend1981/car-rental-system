@@ -18,7 +18,9 @@
 
 @endpush
 @section('sl-mainpanel')
-
+<nav class="breadcrumb sl-breadcrumb d-flex justify-content-center align-items-center">
+    <h2 class="m-0">Rentals</h2>
+</nav>
 
 
   <div class="sl-pagebody">

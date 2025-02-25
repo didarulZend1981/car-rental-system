@@ -24,7 +24,7 @@
 
     <div class="sl-mainpanel">
         @yield('sl-mainpanel')
-       @include('layouts.admin.partials.content_footer')
+       {{-- @include('layouts.admin.partials.content_footer') --}}
     </div><!-- sl-mainpanel -->
 
 

@@ -4,7 +4,7 @@
 <div class="container mt-5">
 
     <div class="text-center my-5">
-        <h1 class="display-4 text-warning font-weight-bold">🚗 Available Cars for Rent</h1>
+        <h1 class="display-4 text-warning font-weight-bold">Available Cars for Rent</h1>
           </div>
 
     <!-- Search & Filter Form -->
@@ -48,10 +48,7 @@
 
 
 
-            <!-- Reset Button -->
-            <div class="col-md-2">
-                <a href="#" class="btn btn-warning w-100">🔄 Reset</a>
-            </div>
+
         </div>
     </form>
 
@@ -63,18 +60,22 @@
 
                     <img src="{{ asset('storage/' . $car->image) }}" class="card-img-top" alt="{{ $car->name }}" style="height: 200px">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $car->name }} ({{ $car->car_type }})</h5>
-                        <p class="card-text">
-                            💰 <strong>Price:</strong> ${{ $car->daily_rent_price }} per day <br>
-                            📅 <strong>Availability:</strong> {{ $car->availability ? 'Available' : 'Booked' }}
+
+                         <div class="d-flex justify-content-between mb-2">
+                            <p class="card-text"><strong>Name:</strong> {{ $car->name }}</p>
+                            <p class="card-text"><strong>Type:</strong> {{ $car->car_type }}</p>
+                        </div>
+                        <p class="card-text d-flex justify-content-between mb-2">
+                            <strong>Rent:</strong> ${{ $car->daily_rent_price }} per day <br>
+                            <strong>Availability:</strong> {{ $car->availability ? 'Available' : 'Booked' }}
                         </p>
-                        <a href="{{ route('reantalPage.details', $car->id) }}" class="btn btn-success w-100">🚀 Book Now</a>
+                        <a href="{{ route('reantalPage.details', $car->id) }}" class="btn btn-success w-100 mb-3">Book Now</a>
                     </div>
                 </div>
             </div>
         @empty
             <div class="col-12">
-                <div class="alert alert-warning">🚫 No cars found matching your search criteria!</div>
+                <div class="alert alert-warning"> No cars found matching your search criteria!</div>
             </div>
         @endforelse
     </div>

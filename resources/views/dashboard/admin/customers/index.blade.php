@@ -25,11 +25,9 @@
 
 @section('sl-mainpanel')
 
-<nav class="breadcrumb sl-breadcrumb">
-    <a class="breadcrumb-item" href="index.html">Starlight</a>
-    <a class="breadcrumb-item" href="index.html">Tables</a>
-    <span class="breadcrumb-item active">Data Table</span>
-  </nav>
+<nav class="breadcrumb sl-breadcrumb d-flex justify-content-center align-items-center">
+    <h2 class="m-0">Customer Information</h2>
+</nav>
 
   <div class="sl-pagebody">
 

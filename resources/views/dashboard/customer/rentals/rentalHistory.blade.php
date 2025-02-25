@@ -25,23 +25,16 @@
 
 @section('sl-mainpanel')
 
-<nav class="breadcrumb sl-breadcrumb">
-    
-  </nav>
+<nav class="breadcrumb sl-breadcrumb d-flex justify-content-center align-items-center">
+    <h2 class="m-0">Rental <b>History</b></h2>
+</nav>
 
   <div class="sl-pagebody">
 
     <div class="card pd-20 pd-sm-40">
 
 
-    <div class="table-title">
-        <div class="row">
-            <div class="col-sm-10">
-                <h2>Rental <b>History</b></h2>
-            </div>
-
-        </div>
-    </div>
+   
 
 
 

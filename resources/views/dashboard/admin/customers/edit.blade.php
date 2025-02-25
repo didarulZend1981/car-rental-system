@@ -8,11 +8,9 @@
 
 @endpush
 @section('sl-mainpanel')
-      <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item" href="index.html">Starlight</a>
-        <a class="breadcrumb-item" href="index.html">Forms</a>
-        <span class="breadcrumb-item active">Form Layouts</span>
-      </nav>
+<nav class="breadcrumb sl-breadcrumb d-flex justify-content-center align-items-center">
+    <h2 class="m-0">Customer update</h2>
+</nav>
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
